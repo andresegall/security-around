@@ -13,7 +13,6 @@ SoftwareSerial BTserial(2, 3); // RX | TX
 // Connect the HC-06 RX to the Arduino TX on pin 3 through a voltage divider.
 // 
  
- 
 void setup() 
 {
     Serial.begin(9600);
@@ -25,7 +24,6 @@ void setup()
  
 void loop()
 {
- 
     // Keep reading from HC-06 and send to Arduino Serial Monitor
     if (BTserial.available())
     {  
@@ -37,5 +35,4 @@ void loop()
     {
         BTserial.write(Serial.read());
     }
- 
 }
