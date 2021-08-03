@@ -24,7 +24,7 @@ void loop() {
   //  float n =1.81;
   char buf[10];
   
-  for (int i=0; i < 20; i++){   //  Verificar 10 valores de rssi
+  for (int i=0; i < 20; i++){   //  Verificar 20 valores de rssi
     rssi += WiFi.RSSI();
     delay(20);
   }
