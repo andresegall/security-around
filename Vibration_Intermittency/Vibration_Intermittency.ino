@@ -57,4 +57,13 @@ void loop() {
     display.drawString(0, 0, "SEGURO");
     digitalWrite(VIBRACALL, LOW);
   }
+
+  char buf[10];
+  gcvt(rssi, 4, buf);
+  strcat(buf, " dBm");
+  display.setFont(ArialMT_Plain_16);
+  display.drawString(0, 30, buf);
+
+  display.display();
+  delay(10);
 }
