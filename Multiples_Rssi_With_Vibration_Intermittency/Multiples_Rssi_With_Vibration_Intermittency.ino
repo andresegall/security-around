@@ -98,7 +98,7 @@ void loop() {
 
         char number[99];
         itoa(forkLifts, number, 10);
-        strcat(number, " Emp.");
+        strcat(number, " Empilhadeira(s)");
         display.setFont(ArialMT_Plain_16);
         display.drawString(0, 48, number);
     }
