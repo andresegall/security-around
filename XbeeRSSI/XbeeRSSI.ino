@@ -21,34 +21,34 @@
 
 int digitalPin = 10;  // the RSSI pin 6 of Xbee is connected to this PWM Pin. (Digital Pin 10)
 int rssiDur;  // Variable for RSSI
-int led = 13;  // LED connected to Pin 13
+// int led = 13;  // LED connected to Pin 13
 
 void setup()
 {
-  pinMode(led, OUTPUT);
+  pinMode(LED_BUILTIN, OUTPUT);
   pinMode(digitalPin, INPUT);
  
-  Serial.begin(9600);   // this is the connection for your Arduino to your PC/MAC
-  Serial3.begin(9600);   // this is the connection of your Xbee to your Arduino MEGA!!
+  // Serial.begin(9600);   // this is the connection for your Arduino to your PC/MAC
+  Serial.begin(9600);   // this is the connection of your Xbee to your Arduino MEGA!!
 }
 
 void loop()
 {
-  if(Serial3.available() >= 21) {    // This isn't important. You can do here whatever you want.
+  if(Serial.available() >= 21) {    // This isn't important. You can do here whatever you want.
             
-    if(Serial3.read() == 0x7E) {  // Reads the start byte
+    if(Serial.read() == 0x7E) {  // Reads the start byte
       for(int i = 1; i < 19; i++) {
-        byte discardByte = Serial3.read();
+        byte discardByte = Serial.read();
         
         rssiDur = pulseIn(digitalPin, LOW, 200); // get's the RSSI Value
         Serial.println(rssiDur);  //for debbuging and first setup.
         
         if(rssiDur < 40 && rssiDur != 0){  //turns Led on if RSSI is less then 40
-          digitalWrite(led, HIGH); 
+          digitalWrite(LED_BUILTIN, HIGH); 
         }
         
         if(rssiDur > 40 && rssiDur != 0){ //turns Led off if RSSI is bigger then 40
-          digitalWrite(led, LOW); 
+          digitalWrite(LED_BUILTIN, LOW); 
         }
       }
     }
