@@ -50,7 +50,7 @@ void loop() {
     display.clear();
     display.setFont(ArialMT_Plain_16);
     
-    if(rssi > - 40) {
+    if(rssi > - 85) {
       display.drawString(0, 0, "PERIGO");
     }
     else {
