@@ -61,7 +61,7 @@ void setup() {
 
 void loop() {
    // start transmitting after a startup delay.  Note: this will rollover to 0 eventually so not best way to handle
-    if (millis() - start > 500) {
+    if (millis() - start > 250) {
       // break down 10-bit reading into two bytes and place in payload
       pin5 = analogRead(5);
       payload[0] = pin5 >> 8 & 0xff;
@@ -72,5 +72,5 @@ void loop() {
       // flash TX indicator
       flashLed(statusLed, 1, 100);
     }   
-    delay(100);
+    delay(50);
 }

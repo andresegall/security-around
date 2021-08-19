@@ -58,7 +58,7 @@ void turnOnSignal() {
 }
 
 void retryOrTurnOffSignal() {
-  if(retries < 10) {
+  if(retries < 5) {
     retries++;
   }
   else {
