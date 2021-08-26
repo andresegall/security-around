@@ -6,6 +6,7 @@ String rssiMonitor;
 int messagePackage = 0;
 int retries = 0;
 int noSignalReceived = 0;
+int contadorRisco = 0;
 
 void setup() {
   Serial.begin(9600);
@@ -24,8 +25,24 @@ void loop() {
     if(messagePackage == 6) {
       int rssi = getRssi();            
 
-      if(rssi < 47 && rssi != 0) {
-        turnOnSignal();
+      if(rssi <= 53 && rssi != 0) {
+        if (rssi < 48) {
+          digitalWrite(LED_BUILTIN, HIGH);   
+          contadorRisco = 0;
+        }
+        else {
+          if (contadorRisco < 5) {         
+            digitalWrite(LED_BUILTIN, HIGH);
+          }
+          else {
+            digitalWrite(LED_BUILTIN, LOW);
+
+            if(contadorRisco == 9) {
+                contadorRisco = 0;
+            }
+          }
+        contadorRisco++;
+        }
       }
       else {
         retryOrTurnOffSignal();
